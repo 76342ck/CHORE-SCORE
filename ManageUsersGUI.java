@@ -2,13 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.awt.TextField;
-import java.util.*;
-import javax.swing.AbstractButton;
 import javax.swing.JCheckBox;
 
 public class ManageUsersGUI extends JPanel {
-    public ArrayList<AddUsers> users = new ArrayList<>();
+    public ArrayList<User> users = new ArrayList<>();
 
     private JLabel addNewUserLabel;
     private JTextField addNewUserTextField;
@@ -62,7 +59,7 @@ public class ManageUsersGUI extends JPanel {
     private class AddButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String text = addNewUserTextField.getText();
-            users.add(new AddUsers(text));
+            users.add(new User(text));
 
             // Display the changes.
             JOptionPane.showMessageDialog(null, text + " has been added.");
