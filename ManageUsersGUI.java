@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
 
-public class ManageUsersGUI extends JPanel {
+public class ManageUsersGUI extends JFrame {
     public ArrayList<User> users = new ArrayList<>();
 
     private JLabel addNewUserLabel;
@@ -13,9 +13,13 @@ public class ManageUsersGUI extends JPanel {
     private JButton addButton;
     private JButton deleteButton;
     private JPanel namePanel;
+    final int WINDOW_WIDTH = 650;
+    final int WINDOW_HEIGHT = 500;
     
 
     public ManageUsersGUI() {
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+
         //construct components
         addNewUserLabel = new JLabel ("Add new User here:");
         addNewUserTextField = new JTextField (0);
@@ -53,13 +57,15 @@ public class ManageUsersGUI extends JPanel {
         addButton.addActionListener(new AddButtonListener());
         
         deleteButton.addActionListener(new DeleteButtonListener());
+
+        setVisible(true);
     }
            
        
     private class AddButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String text = addNewUserTextField.getText();
-            users.add(new User(text));
+            ChoreScoreData.getUserList().add(new User(text));
 
             // Display the changes.
             JOptionPane.showMessageDialog(null, text + " has been added.");

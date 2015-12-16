@@ -1,7 +1,7 @@
 public enum Frequency {
-    DAILY("Daily"),
-    WEEKLY("Weekly"),
-    MONTHLY("Monthly");
+    DAILY("daily"),
+    WEEKLY("weekly"),
+    MONTHLY("monthly");
 
     //intervals of LocalDateTime
     private String frequency;

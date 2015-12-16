@@ -1,7 +1,7 @@
 public class User {
 
    private String userName;
-   private int points = 0;
+   private Integer points = 0;
    
    public User(String userName) {
       this.userName = userName;
@@ -19,9 +19,13 @@ public class User {
       return userName;
    }
 
-    public void addPoints(int chorePoints) {
+   public void addPoints(Integer chorePoints) {
         points += chorePoints;
     }
+
+   public Integer getPoints() {
+      return points;
+   }
    public String toString() {
       return userName + "\n";
    }

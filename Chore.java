@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 public class Chore {
     private String name;
     private Frequency frequency;
-    private int points;
+    private Integer points;
     private LocalDateTime lastCompleted;
 
     public Chore(String name, Frequency frequency, int points) {
@@ -26,9 +26,14 @@ public class Chore {
     public void setPoints(int points) {
         this.points = points;
     }
-    public int getPoints() {
+    public Integer getPoints() {
         return points;
     }
+
+    public void setLastCompleted(LocalDateTime lastCompleted) {
+        this.lastCompleted = lastCompleted;
+    }
+
     public void setComplete() {
         lastCompleted = LocalDateTime.now();
     }
