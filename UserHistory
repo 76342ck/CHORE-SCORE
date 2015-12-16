@@ -1,0 +1,111 @@
+import java.awt.*;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
+import javax.swing.*;
+import java.awt.event.*;
+import java.text.NumberFormat;
+
+public class UserHistory extends JPanel {
+    private JLabel jcomp1;
+    private JComboBox<User> userList;
+    private JLabel jcomp5;
+    private JTextField pointsEarned;
+    private JLabel jcomp7;
+    private JList choresCompleted;
+
+    public UserHistory() {        
+        //construct preComponents
+        ManageUsersGUI list = new ManageUsersGUI();
+        String[] userListItems = new String[list.users.size()];
+        String[] choresCompletedItems = {"Item 1", "Item 2", "Item 3"};
+
+        //construct components
+        jcomp1 = new JLabel ("User History");
+        userList = new JComboBox(userListItems);
+
+        userList.addPopupMenuListener(new PopupMenuListener() {
+            @Override
+            public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
+                userList.removeAllItems();
+                for (User user: list.users) {
+                    userList.addItem(user);
+                }   
+            }
+
+            @Override
+            public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+            }
+
+            @Override
+            public void popupMenuCanceled(PopupMenuEvent e) {
+            }
+        });
+
+        jcomp5 = new JLabel ("Total points earned: ");
+        pointsEarned = new JTextField ();
+        userList.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               myBox(e);
+            }
+        });   
+        
+        jcomp5 = new JLabel ("Total points earned: ");
+        pointsEarned = new JTextField ("");
+        userList.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               myBox(e); 
+               userList.setEditable(true);
+               userList.addActionListener(this);
+            }   
+        });        
+        
+             
+        jcomp7 = new JLabel ("List of chores completed: ");
+        choresCompleted = new JList (choresCompletedItems);
+
+        //set components properties
+        userList.setToolTipText ("Select a user");
+
+        //adjust size and set layout
+        setPreferredSize (new Dimension (465, 343));
+        setLayout (null);
+
+        //add components
+        add (jcomp1);
+        add (userList);
+        add (jcomp5);
+        add (pointsEarned);
+        add (jcomp7);
+        add (choresCompleted);
+
+        //set component bounds (only needed by Absolute Positioning)
+        jcomp1.setBounds (120, 20, 70, 25);
+        userList.setBounds (210, 20, 100, 25);
+        jcomp5.setBounds (125, 105, 140, 25);
+        pointsEarned.setBounds (245, 105, 100, 25);
+        jcomp7.setBounds (95, 140, 160, 25);
+        choresCompleted.setBounds (245, 145, 100, 75);
+    }
+      
+    protected void myBox(ActionEvent e) {
+        Object obj = userList.getSelectedItem();
+        if(obj != null) {
+            if(obj instanceof User) {
+               User user = (User)obj;
+               pointsEarned.setText(NumberFormat.getNumberInstance().format(user.getPoints()));
+            }  
+        }
+    }  
+          
+    public static void main (String[] args) {
+        JFrame frame = new JFrame ("UserHistory");
+        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add (new UserHistory());
+        frame.pack();
+        frame.setVisible (true);
+
+        ManageUsersGUI.manageUsers();
+    }
+}
