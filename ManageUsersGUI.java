@@ -5,22 +5,25 @@ import java.util.ArrayList;
 import javax.swing.JCheckBox;
 
 public class ManageUsersGUI extends JFrame {
-    public ArrayList<User> users = new ArrayList<>();
-
+    public ArrayList<User> users;
+    private JLabel title;
     private JLabel addNewUserLabel;
     private JTextField addNewUserTextField;
     private JLabel deleteUsersLabel;
     private JButton addButton;
     private JButton deleteButton;
     private JPanel namePanel;
-    final int WINDOW_WIDTH = 650;
-    final int WINDOW_HEIGHT = 500;
+    final int WINDOW_WIDTH = 500;
+    final int WINDOW_HEIGHT = 400;
     
 
     public ManageUsersGUI() {
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
         //construct components
+        title = new JLabel ("Manage Users");
+        title.setFont(new Font("Serif", Font.PLAIN, 28));
+
         addNewUserLabel = new JLabel ("Add new User here:");
         addNewUserTextField = new JTextField (0);
         deleteUsersLabel = new JLabel ("Select which User(s) you would like to delete:");
@@ -35,10 +38,11 @@ public class ManageUsersGUI extends JFrame {
         deleteButton.setToolTipText ("Click here to delete User(s) selected.");
 
         //adjust size and set layout
-        setPreferredSize (new Dimension (580, 485));
+        setPreferredSize (new Dimension (500, 600));
         setLayout (null);
 
         //add components
+        add (title);
         add (addNewUserLabel);
         add (addNewUserTextField);
         add (deleteUsersLabel);
@@ -47,20 +51,20 @@ public class ManageUsersGUI extends JFrame {
         add (deleteButton);
 
         //set component bounds (only needed by Absolute Positioning)
-        addNewUserLabel.setBounds (85, 130, 120, 25);
-        addNewUserTextField.setBounds (235, 130, 125, 25);
-        deleteUsersLabel.setBounds (135, 225, 281, 25);
-        addButton.setBounds (385, 130, 100, 25);
+        title.setBounds (170, 10, 300, 100);
+        addNewUserLabel.setBounds (65, 90, 120, 25);
+        addNewUserTextField.setBounds (200, 90, 125, 25);
+        deleteUsersLabel.setBounds (135, 120, 281, 25);
+        addButton.setBounds (350, 90, 90, 25);
         namePanel.setBounds(225, 270, 140, 0);
-        deleteButton.setBounds (230, 335, 100, 25);
+        deleteButton.setBounds (200, 300, 100, 25);
 
         addButton.addActionListener(new AddButtonListener());
         
         deleteButton.addActionListener(new DeleteButtonListener());
 
         setVisible(true);
-    }
-           
+    }      
        
     private class AddButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -73,8 +77,8 @@ public class ManageUsersGUI extends JFrame {
             JCheckBox nameCheckBox = new JCheckBox();
             nameCheckBox.setText(addNewUserTextField.getText());
             namePanel.add(nameCheckBox);
-            namePanel.setBounds(225, 270, 140, namePanel.getHeight() + 25);
-            deleteButton.setBounds(230, deleteButton.getY() + 25, 100, 25);
+            namePanel.setBounds(225, 140, 140, namePanel.getHeight() + 25);
+            deleteButton.setBounds(200, deleteButton.getY() + 25, 100, 25);
             JFrame frame = (JFrame) getRootPane().getParent();
             frame.setSize(frame.getWidth(), frame.getHeight() + 25);
             frame.pack(); 
