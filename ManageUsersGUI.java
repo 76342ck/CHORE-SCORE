@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
+import java.util.*;
 
 public class ManageUsersGUI extends JFrame {
     public ArrayList<User> users;
@@ -92,6 +93,10 @@ public class ManageUsersGUI extends JFrame {
                if(component instanceof JCheckBox) {
                   if(((JCheckBox)component).isSelected())
                      namePanel.remove(component);
+                     for (Iterator it = users.iterator(); it.hasNext();) {
+                         it.next();
+                         it.remove();
+                     }           
                }
             }
             namePanel.revalidate();
