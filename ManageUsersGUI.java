@@ -94,6 +94,16 @@ public class ManageUsersGUI extends JFrame {
             namePanel.repaint();
          }   
     }
+    
+       // in ManageUsersGUI
+   public static void manageUsers() {
+       JFrame frame = new JFrame ("AddUsersPanel1");
+       frame.setTitle("Manage Users");
+       frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+       frame.getContentPane().add (new ManageUsersGUI());
+       frame.pack();
+       frame.setVisible (true);
+   } 
                 
 
     public static void main (String[] args) {
