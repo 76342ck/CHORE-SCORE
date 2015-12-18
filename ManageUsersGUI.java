@@ -93,10 +93,7 @@ public class ManageUsersGUI extends JFrame {
                if(component instanceof JCheckBox) {
                   if(((JCheckBox)component).isSelected())
                      namePanel.remove(component);
-                     for (Iterator it = users.iterator(); it.hasNext();) {
-                         it.next();
-                         it.remove();
-                     }           
+                     ChoreScoreData.getUserList().remove(new User(((JCheckBox)component).getText()));          
                }
             }
             namePanel.revalidate();
