@@ -8,8 +8,8 @@ public class ChoreScoreData {
 
     public static final String SAVE_FILE_PATH = "C:\\Users\\Lia\\Dropbox\\ChoreScore\\";
 
-    private static ArrayList<User> userList = new ArrayList<User>();
-    private static ArrayList<Chore> choreList = new ArrayList<Chore>();
+    public static ArrayList<User> userList = new ArrayList<User>();
+    public static ArrayList<Chore> choreList = new ArrayList<Chore>();
 
     public static void writeChoreData() throws FileNotFoundException {
         try {
