@@ -10,6 +10,7 @@ Airlia Choyce - Completed files MenuGreetingPanel.java, ChoreCheckBox.java, Chor
                                 MenuButtonPanel.java, MenuWindow.java
 
 Sofia Chen - Completed files User.java, ManageUsersGUI.java, MenuButtonPanel.java, UserHistory.java
+
 Melissa Wairimu - Completed files AddDelete.java
 
 Integration of codes worked on by Airlia & Sofia 
