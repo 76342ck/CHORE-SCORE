@@ -15,6 +15,7 @@ Melissa Wairimu - Completed files AddDelete.java
 Integration of codes worked on by Airlia & Sofia 
 
 INSTRUCTIONS:
+
 1. Extract the ZIP/JAR file
 2. Open ChoreScoreData.java
 3. Look for Line 9:     public static final String SAVE_FILE_PATH = "C:\\Users\\NAME\\Dropbox\\ChoreScore\\";
